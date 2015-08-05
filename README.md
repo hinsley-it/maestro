@@ -1,2 +1,2 @@
 # maestro
-Web-based mobile-and-web game development platform
+Web-based mobile and web game development platform
