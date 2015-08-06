@@ -84,6 +84,17 @@ function fullscreenActive() {
 }
 
 /**
+ * Attempts to toggle fullscreen mode.
+ **/
+function toggleFullscreen(element) {
+    if (fullscreenActive()) {
+        deactivateFullscreen();
+    } else {
+        activateFullscreen(element);
+    }
+}
+
+/**
  * Return `true` if fullscreen mode is supported by the current browser,
  * `false` otherwise.
  **/
