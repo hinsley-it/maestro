@@ -1,7 +1,7 @@
-# Windowing system
+# Tael is a JavaScript-based tiling panel system
 
 ## Overview
-Maestro's windowing system is composed of tiling widgets, which are panels
+Maestro's windowing system, Tael is composed of tiling widgets, which are panels
 exposing various customizable tools for content creation.
 
 ## Data Structures
