@@ -4,6 +4,3 @@
  * MIT License
  *****/
 
-$(document).ready(function () {
-    $('.tael-container').append($('<div>').addClass('tael-node-leaf').text('Hello, world!'));
-});
