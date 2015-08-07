@@ -5,5 +5,5 @@
  *****/
 
 $(document).ready(function () {
-    $('.tael-container').text('Hello, world!');
+    $('.tael-container').append($('<div>').addClass('tael-node-leaf').text('Hello, world!'));
 });
