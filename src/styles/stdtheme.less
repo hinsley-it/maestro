@@ -54,17 +54,50 @@ body {
     background-color: @off-white;
     border-radius: 8px;
 }
-div.mae-button {
+.mae-button {
     text-align: center;
 }
-div.mae-button:hover {
+.mae-button:hover {
     .mae-button-hover();
 }
-div.mae-button:active {
+.mae-button:active {
     .mae-button-hover();
     background-color: @grey;
 }
 
-div.mae-logo {
+.nav li a {
+    color: inherit;
+    background: none;
+}
+.nav li a:hover {
+    background: none;
+}
+.nav li a:active {
+    background: none;
+}
+.mae-button.dropdown a.dropdown-toggle {
+    padding: 0;
+    background: none;
+}
+a.dropdown-toggle b.caret {
+    vertical-align: top;
+    margin-top: 0.65em;
+}
+
+ul.dropdown-menu {
+    margin-top: 0px;
+    color: @off-white;
+    background-color: @dark-grey;
+}
+ul.dropdown-menu:hover {
+    color: black;
+    background-color: @off-white;
+}
+
+ul.dropdown-menu li {
+    font-family: 'lato-medium'
+}
+
+.mae-logo {
     cursor: default;
 }

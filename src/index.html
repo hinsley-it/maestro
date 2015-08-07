@@ -31,19 +31,30 @@
     <body>
         <div class="container-fluid">
             <div class="header row no-select">
-                <div class="mae-button col-md-1">
-                    File
-                </div>
-                <div class="mae-button col-md-1">
-                    Edit
-                </div>
-                <div class="mae-button col-md-2">
-                    Objects
-                </div>
-                <div class="col-md-6"></div>
-                <div class="mae-logo col-md-2">
-                    MAESTRO
-                </div>
+                <ul class="nav">
+                    <li class="mae-button dropdown col-md-1">
+                        File
+                    </li>
+                    <li class="mae-button dropdown col-md-1">
+                        Edit
+                    </li>
+                    <li class="mae-button dropdown col-md-2">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            View
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="toggleFullscreen($('body')[0]);">Fullscreen</a></li>
+                        </ul>
+                    </li>
+                    <li class="mae-button dropdown col-md-2">
+                        Objects
+                    </li>
+                    <div class="col-md-4"></div>
+                    <div class="mae-logo col-md-2">
+                        MAESTRO
+                    </div>
+                </ul>
             </div>
         </div>
     </body>
