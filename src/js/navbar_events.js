@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#nav-view-fullscreen')[0].addEventListener('click', function () {
+    $('#nav-view-fullscreen').click(function () {
         toggleFullscreen($('body')[0]);
     });
 });
