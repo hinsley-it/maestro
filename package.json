@@ -16,7 +16,8 @@
     ],
     "dependencies": {
         "browserify": "*",
-        "gulp": "*"
+        "gulp": "*",
+        "jquery-browserify": "*"
     },
     "private": true,
     "license": "MIT"
