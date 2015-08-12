@@ -1,0 +1,20 @@
+{
+    "name": "Maestro",
+    "version": "0.0.1",
+    "description": "Web-based mobile-and-web game development platform",
+    "author": "Carter Hinsley <carterhinsley@gmail.com>",
+    "contributors": [{}],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hinsley-it/maestro"
+    },
+    "bugs": {
+        "url": "https://github.com/hinsley-it/maestro/issues"
+    },
+    "keywords": [
+        "game engine"
+    ],
+    "dependencies": {},
+    "private": true,
+    "license": "MIT"
+}
