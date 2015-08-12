@@ -15,7 +15,8 @@
         "game engine"
     ],
     "dependencies": {
-        "browserify": "*"
+        "browserify": "*",
+        "gulp": "*"
     },
     "private": true,
     "license": "MIT"
