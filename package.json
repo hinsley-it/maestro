@@ -14,7 +14,9 @@
     "keywords": [
         "game engine"
     ],
-    "dependencies": {},
+    "dependencies": {
+        "browserify": "*"
+    },
     "private": true,
     "license": "MIT"
 }
