@@ -16,7 +16,7 @@
   "keywords": [
     "game engine"
   ],
-  "dependencies": {
+  "devDependencies": {
     "browserify": "^11.0.1",
     "gulp": "^3.9.0",
     "jquery": "^2.1.4"
