@@ -4,11 +4,13 @@
  * MIT License
  *****/
 
-$(document).ready(function () {
-    $('.tael-container').
-    append(
-        $('<div>').
-        addClass('tael-node-leaf').
-        text('Hello, world!')
-    );
-});
+module.exports = function () {
+    $(document).ready(function () {
+        $('.tael-container').
+        append(
+            $('<div>').
+            addClass('tael-node-leaf').
+            text('Hello, world!')
+        );
+    });
+};

@@ -6,7 +6,9 @@ function resizeTaelContainer() {
     tael_container.css('bottom', 16);
 }
 
-$(document).ready(function () {
-    resizeTaelContainer();
-    $(window).resize(resizeTaelContainer);
-});
+module.exports = function () {
+    $(document).ready(function () {
+        resizeTaelContainer();
+        $(window).resize(resizeTaelContainer);
+    });
+};

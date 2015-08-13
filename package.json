@@ -1,20 +1,34 @@
 {
-    "name": "Maestro",
-    "version": "0.0.1",
-    "description": "Web-based mobile-and-web game development platform",
-    "author": "Carter Hinsley <carterhinsley@gmail.com>",
-    "contributors": [{}],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/hinsley-it/maestro"
-    },
-    "bugs": {
-        "url": "https://github.com/hinsley-it/maestro/issues"
-    },
-    "keywords": [
-        "game engine"
-    ],
-    "dependencies": {},
-    "private": true,
-    "license": "MIT"
+  "name": "Maestro",
+  "version": "0.0.1",
+  "description": "Web-based mobile-and-web game development platform",
+  "author": "Carter Hinsley <carterhinsley@gmail.com>",
+  "contributors": [
+    {}
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hinsley-it/maestro"
+  },
+  "bugs": {
+    "url": "https://github.com/hinsley-it/maestro/issues"
+  },
+  "keywords": [
+    "game engine"
+  ],
+  "browserify": {
+    "transform": [
+      "coffeeify"
+    ]
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "coffeeify": "^1.1.0",
+    "gulp": "^3.9.0",
+    "jquery": "^2.1.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "private": true,
+  "license": "MIT"
 }
