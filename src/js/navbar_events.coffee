@@ -3,7 +3,7 @@
     if typeof define is 'function' and define.amd
         # AMD.
         define([], factory)
-    else if typeof module is 'object' and module.exports 
+    else if typeof module is 'object' and module.exports
         # Node.
         module.exports = factory()
     else
