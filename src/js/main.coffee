@@ -1,1 +1,1 @@
-require('./navbar_events.coffee')()
+(require './navbar_events.coffee')()
