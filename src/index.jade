@@ -31,25 +31,4 @@ html(lang="en")
     
     body
         .container-fluid
-            .header.row.no-select
-                ul.nav
-                    li.mae-button.dropdown.col-md-2
-                        | File
-                    li.mae-button.dropdown.col-md-2
-                        | Edit
-                    li.mae-button.dropdown.col-md-2
-                        a.dropdown-toggle(
-                            href        = "#",
-                            data-toggle = "dropdown"
-                        )
-                            | View
-                            b.caret
-                        ul.dropdown-menu
-                            li
-                                a#nav-view-fullscreen(href = "#")
-                                    | Fullscreen
-                    li.mae-button.dropdown.col-md-2
-                        | Objects
-                    .col-md-2
-                    .mae-logo.col-md-2
-                        | MAESTRO
+            include ./views/header.jade

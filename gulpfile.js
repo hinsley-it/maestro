@@ -40,6 +40,7 @@ gulp.task('build', [
 gulp.task('default', function () {
     // Watch for Jade changes
     gulp.watch('./src/index.jade', ['build-jade']);
+    gulp.watch('./src/views/*', ['build-jade']);
     // Watch for JS changes
     gulp.watch('./src/js/*', ['build-js']);
     // Watch for LESS changes
