@@ -1,9 +1,16 @@
 var browserify = require('browserify');
 var buffer     = require('vinyl-buffer');
 var gulp       = require('gulp');
+var jade       = require('gulp-jade');
 var less       = require('gulp-less');
 var source     = require('vinyl-source-stream');
 var uglify     = require('gulp-uglify');
+
+gulp.task('build-jade', function () {
+    return gulp.src('./src/index.jade')
+        .pipe(jade())
+        .pipe(gulp.dest('./src/'));
+});
 
 gulp.task('build-js', function () {
     var b = browserify({
@@ -24,12 +31,15 @@ gulp.task('build-less', function () {
         .pipe(gulp.dest('./src/styles/'));
 });
 
-gulp.task('build', function () {
-    gulp.run('build-js');
-    gulp.run('build-less');
-});
+gulp.task('build', [
+    'build-jade',
+    'build-js',
+    'build-less'
+]);
 
 gulp.task('default', function () {
+    // Watch for Jade changes
+    gulp.watch('./src/index.jade', ['build-jade']);
     // Watch for JS changes
     gulp.watch('./src/js/*', ['build-js']);
     // Watch for LESS changes
