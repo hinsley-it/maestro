@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset = "UTF-8")
+        meta(
+            name    = "viewport",
+            content = "width = device-width, initial-scale = 1, maximum-scale = 1, user-scalable = no"
+        )
+        title
+            | Maestro
+
+        //- CSS Includes
+        link(
+            rel  = "stylesheet",
+            href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+        )
+
+        //- Custom CSS
+        link(
+            rel  = "stylesheet",
+            type = "text/css",
+            href = "styles/stdtheme.css"
+        )
+
+        //- JS includes
+        script(src = "http://code.jquery.com/jquery-1.11.3.min.js")
+        script(src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js")
+
+        //- Custom JS
+        script(src = "js/app.js")
+    
+    body
+        .container-fluid
+            include ./views/header.jade
+            .tael-container
