@@ -2,9 +2,9 @@
 # Copyright (c) 2015 Carter Hinsley
 # MIT License
 
-tiles = [{
+tiles = [
     type: 'container'
-}]
+]
 
 newTile = (parent) ->
     # Add a new tile to the `tiles` array.
