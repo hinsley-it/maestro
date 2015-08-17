@@ -1,6 +1,7 @@
 # tael.js
 # Copyright (c) 2015 Carter Hinsley
 # MIT License
+error = require './error.coffee'
 
 tiles = [
     type: 'container'
@@ -27,7 +28,7 @@ newTile = (parent) ->
                     split: 'horizontal'
                     divider_location: 1
         when 'branch'
-            throw "Branch tiles cannot spawn new children post-creation."
+            error.throw "Branch tiles cannot spawn new children post-creation."
 
 newTile(tiles[0])
 
