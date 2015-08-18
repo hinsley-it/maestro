@@ -16,9 +16,15 @@ newTile = (parent) ->
                 type: 'leaf'
         ) - 1
     switch parent.type
+        # Modify the parent tile and append one or two new tile(s) to the
+        # `tiles` array.
         when 'container'
+            # Create only one tile; 'container' is the top-level tile.
             parent.child = do pushTile
         when 'leaf'
+            # Create two tiles; converts the 'leaf' tile into a 'branch' tile
+            # before inserting the two new 'leaf' tiles into the 
+            # newly-classified 'branch' tile.
             parent =
                 type: 'branch'
                 children:
@@ -30,7 +36,7 @@ newTile = (parent) ->
         when 'branch'
             error.throw "Branch tiles cannot spawn new children post-creation."
 
-newTile(tiles[0])
+newTile tiles[0]
 
 module.exports = ->
     ($ document).ready ->
