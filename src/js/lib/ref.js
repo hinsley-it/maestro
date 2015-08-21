@@ -1,5 +1,5 @@
 /**
- * by-ref.js
+ * ref.js
  * Copyright (c) 2015 Carter Hinsley
  * MIT License
  */
