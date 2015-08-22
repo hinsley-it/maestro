@@ -36,6 +36,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "fullscreenjs": "0.0.2",
     "refjs": "^1.0.1"
   }
 }

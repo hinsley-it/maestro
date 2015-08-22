@@ -1,4 +1,4 @@
-fs = require './lib/fullscreen.js'
+fs = require 'fullscreenjs'
 
 module.exports = ->
     ($ document).ready ->
