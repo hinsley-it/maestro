@@ -1,10 +1,17 @@
 var browserify = require('browserify');
 var buffer     = require('vinyl-buffer');
+var coffeelint = require('gulp-coffeelint');
 var gulp       = require('gulp');
 var jade       = require('gulp-jade');
 var less       = require('gulp-less');
 var source     = require('vinyl-source-stream');
 var uglify     = require('gulp-uglify');
+
+gulp.task('build', [
+    'build-jade',
+    'build-coffee',
+    'build-less'
+]);
 
 gulp.task('build-coffee', function () {
     var b = browserify({
@@ -31,12 +38,6 @@ gulp.task('build-less', function () {
         .pipe(gulp.dest('./src/styles/'));
 });
 
-gulp.task('build', [
-    'build-jade',
-    'build-coffee',
-    'build-less'
-]);
-
 gulp.task('default', function () {
     // Watch for Jade changes
     gulp.watch('./src/index.jade', ['build-jade']);
@@ -45,4 +46,14 @@ gulp.task('default', function () {
     gulp.watch('./src/js/*.coffee', ['build-coffee']);
     // Watch for LESS changes
     gulp.watch('./src/styles/stdtheme.less', ['build-less']);
+});
+
+gulp.task('lint', [
+    'lint-coffee'
+]);
+
+gulp.task('lint-coffee', function() {
+    return gulp.src('./src/js/*.coffee')
+        .pipe(coffeelint())
+        .pipe(coffeelint.reporter('coffeelint-stylish'));
 });
