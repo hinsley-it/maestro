@@ -16,11 +16,11 @@ newTile = (tiles, parent_id) ->
         # Push a new tile to the `tiles` array and return its index.
         (
             tiles.push new ref
-                    type: 'leaf'
-                    content:
-                        # To be added to
-                        dom: null
-                        data: 'foo'
+                type: 'leaf'
+                content:
+                    # To be added to
+                    dom: null
+                    data: 'foo'
         ) - 1
     
     addLeafToContainer = (parent) ->
