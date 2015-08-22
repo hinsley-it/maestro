@@ -55,5 +55,5 @@ gulp.task('lint', [
 gulp.task('lint-coffee', function() {
     return gulp.src('./src/js/*.coffee')
         .pipe(coffeelint())
-        .pipe(coffeelint.reporter('coffeelint-stylish'));
+        .pipe(coffeelint.reporter());
 });
