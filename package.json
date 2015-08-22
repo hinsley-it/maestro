@@ -34,5 +34,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "private": true,
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "refjs": "^1.0.1"
+  }
 }

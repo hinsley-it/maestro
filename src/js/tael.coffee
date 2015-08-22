@@ -2,7 +2,7 @@
 # Copyright (c) 2015 Carter Hinsley
 # MIT License
 error = require './error.coffee'
-ref = require './lib/ref.js'
+ref = require 'refjs'
 
 tiles = [
     new ref
