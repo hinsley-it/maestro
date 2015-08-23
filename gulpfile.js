@@ -1,11 +1,12 @@
-var browserify = require('browserify');
-var buffer     = require('vinyl-buffer');
-var coffeelint = require('gulp-coffeelint');
-var gulp       = require('gulp');
-var jade       = require('gulp-jade');
-var less       = require('gulp-less');
-var source     = require('vinyl-source-stream');
-var uglify     = require('gulp-uglify');
+var
+    browserify = require('browserify'),
+    buffer     = require('vinyl-buffer'),
+    coffeelint = require('gulp-coffeelint'),
+    gulp       = require('gulp'),
+    jade       = require('gulp-jade'),
+    less       = require('gulp-less'),
+    source     = require('vinyl-source-stream'),
+    uglify     = require('gulp-uglify');
 
 gulp.task('build', [
     'build-jade',
