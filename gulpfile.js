@@ -6,6 +6,7 @@ var
     jade       = require('gulp-jade'),
     jadelint   = require('gulp-jadelint'),
     less       = require('gulp-less'),
+    recess     = require('gulp-recess'),
     source     = require('vinyl-source-stream'),
     uglify     = require('gulp-uglify');
 
@@ -64,6 +65,12 @@ gulp.task('lint-coffee', function () {
     return gulp.src('./src/js/**/*.coffee')
         .pipe(coffeelint())
         .pipe(coffeelint.reporter());
+});
+
+gulp.task('lint-less', function () {
+    return gulp.src('./src/styles/*.less')
+        .pipe(recess())
+        .pipe(recess.reporter());
 });
 
 gulp.task('lint-jade', function () {
