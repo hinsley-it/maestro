@@ -58,6 +58,7 @@ gulp.task('default', function () {
 
 gulp.task('lint', [
     'lint-coffee',
+    'lint-less',
     'lint-jade'
 ]);
 
