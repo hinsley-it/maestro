@@ -28,17 +28,17 @@
 
 body {
     font-family: 'lato-medium';
-    background-color: @dark-grey;
     color: @off-white;
+    background-color: @dark-grey;
 }
 
 .no-select {
-    -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .header {
@@ -48,10 +48,10 @@ body {
     text-align: center;
 }
 
-.mae-button-hover() {
-    cursor: pointer;
+.mae-button-hover(@background-color: @off-white) {
     color: black;
-    background-color: @off-white;
+    cursor: pointer;
+    background-color: @background-color;
     border-radius: 4px;
 }
 .mae-button {
@@ -61,8 +61,7 @@ body {
     .mae-button-hover();
 }
 .mae-button:active {
-    .mae-button-hover();
-    background-color: @grey;
+    .mae-button-hover(@grey);
 }
 
 .nav li a {
@@ -75,29 +74,29 @@ body {
 .nav li a:active {
     background: none;
 }
-.mae-button.dropdown a.dropdown-toggle {
+.dropdown .dropdown-toggle {
     padding: 0;
     background: none;
 }
-a.dropdown-toggle span.caret {
-    vertical-align: top;
+.dropdown-toggle .caret {
     margin-top: 0.65em;
+    vertical-align: top;
 }
 
-ul.dropdown-menu {
-    margin-top: 0px;
-    padding: 0px;
+.dropdown-menu {
+    padding: 0;
+    margin-top: 0;
     color: @off-white;
     background-color: @dark-grey;
 }
-ul.dropdown-menu:hover {
+.dropdown-menu:hover {
     color: black;
     background-color: @off-white;
 }
 
-ul.dropdown-menu li {
-    font-family: 'lato-medium';
+.dropdown-menu li {
     padding: 0.25em;
+    font-family: 'lato-medium';
 }
 
 .mae-logo {
@@ -106,9 +105,9 @@ ul.dropdown-menu li {
 
 .tael-container {
     position: absolute;
-    left: 16px;
     right: 16px;
+    left: 16px;
     padding: 16px;
-    background-color: @off-white;
     color: @dark-grey;
+    background-color: @off-white;
 }
