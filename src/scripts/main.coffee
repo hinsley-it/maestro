@@ -1,3 +1,4 @@
-(require './navbar_events.coffee')()
-(require './tael.coffee')()
-(require './tael_sizing.coffee')()
+do require './navbar_events.coffee'
+do require './tael.coffee'
+do require './tael_sizing.coffee'
+
