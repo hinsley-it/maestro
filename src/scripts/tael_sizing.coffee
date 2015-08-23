@@ -6,6 +6,5 @@ resizeTaelContainer = ->
     tael_container.css 'bottom', 16
 
 module.exports = ->
-    ($ document).ready ->
-        resizeTaelContainer()
-        ($ window).resize resizeTaelContainer
+    do resizeTaelContainer
+    ($ window).resize resizeTaelContainer
