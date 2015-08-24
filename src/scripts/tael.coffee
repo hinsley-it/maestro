@@ -7,27 +7,36 @@ ref = require 'refjs'
 tiles = [
     new ref
         type: 'container'
+        content:
+            dom:
+                ($ '.tael-container')
+                .attr 'id', 'tael-node-0'
         child: undefined
 ]
 
 newTile = (tiles, parent_id) ->
     # Add a new tile to the `tiles` array.
-    pushTile = ->
+    pushTile = (parent) ->
         # Push a new tile to the `tiles` array and return its index.
-        (
+        index = (
             tiles.push new ref
                 type: 'leaf'
                 content:
-                    # To be added to
-                    dom: null
-                    data: 'foo'
+                    dom:
+                        ($ '<div>')
+                        .addClass 'tael-node-leaf'
+                        .text 'foo'
+                        .appendTo parent.tile.value.content.dom
+                    data: null
         ) - 1
+        tiles[index].value.content.dom.attr 'id', 'tael-node-'+index
+        index
     
     addLeafToContainer = (parent) ->
         # Create only one tile and add it as the child of the supplied parent.
         # As the container tile is the top-level tile, it has only a single
         # child tile.
-        parent.tile.value.child = do pushTile
+        parent.tile.value.child = pushTile parent
     
     addLeavesToLeaf = (parent) ->
         # Create two tiles; convert the 'leaf' tile into a 'branch' tile
@@ -35,9 +44,14 @@ newTile = (tiles, parent_id) ->
         # 'branch' tile.
         parent.tile.value =
             type: 'branch'
+            content:
+                dom:
+                    parent.tile.value.content.dom
+                    .attr 'class', 'tael-node-branch'
+                    .html ''
             children:
-                left: do pushTile
-                right: do pushTile
+                left: pushTile parent
+                right: pushTile parent
             layout:
                 split: 'horizontal'
                 divider_location: 0.5
@@ -56,13 +70,7 @@ newTile = (tiles, parent_id) ->
         when 'branch'
             error.throw "Branch tiles cannot spawn new children post-creation."
 
-newTile tiles, 0
-
 module.exports = ->
-    ($ document).ready ->
-        ($ '.tael-container')
-        .append(
-            ($ '<div>')
-            .addClass 'tael-node-leaf'
-            .text tiles[1].value.content.data
-        )
+    newTile tiles, 0
+    newTile tiles, 1
+
