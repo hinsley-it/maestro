@@ -42,13 +42,17 @@ newTile = (tiles, parent_id) ->
         # Create two tiles; convert the 'leaf' tile into a 'branch' tile
         # before inserting the two new 'leaf' tiles into the newly-classified
         # 'branch' tile.
+        emptyInnerHtml = (jquery_element) ->
+            return jquery_element.html ''
+
         parent.tile.value =
             type: 'branch'
             content:
                 dom:
-                    parent.tile.value.content.dom
-                    .attr 'class', 'tael-node-branch'
-                    .html ''
+                    emptyInnerHtml(
+                        parent.tile.value.content.dom
+                        .attr 'class', 'tael-node-branch'
+                    )
             children:
                 left: pushTile parent
                 right: pushTile parent
