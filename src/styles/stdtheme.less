@@ -32,13 +32,30 @@ body {
     background-color: @dark-grey;
 }
 
-.no-select {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
+.dropdown .dropdown-toggle {
+    padding: 0;
+    background: none;
+}
+
+.dropdown-menu {
+    padding: 0;
+    margin-top: 0;
+    color: @off-white;
+    background-color: @dark-grey;
+}
+.dropdown-menu:hover {
+    color: black;
+    background-color: @off-white;
+}
+
+.dropdown-menu li {
+    padding: 0.25em;
+    font-family: 'lato-medium';
+}
+
+.dropdown-toggle .caret {
+    margin-top: 0.65em;
+    vertical-align: top;
 }
 
 .header {
@@ -64,6 +81,10 @@ body {
     .mae-button-hover(@grey);
 }
 
+.mae-logo {
+    cursor: default;
+}
+
 .nav li a {
     color: inherit;
     background: none;
@@ -74,33 +95,14 @@ body {
 .nav li a:active {
     background: none;
 }
-.dropdown .dropdown-toggle {
-    padding: 0;
-    background: none;
-}
-.dropdown-toggle .caret {
-    margin-top: 0.65em;
-    vertical-align: top;
-}
 
-.dropdown-menu {
-    padding: 0;
-    margin-top: 0;
-    color: @off-white;
-    background-color: @dark-grey;
-}
-.dropdown-menu:hover {
-    color: black;
-    background-color: @off-white;
-}
-
-.dropdown-menu li {
-    padding: 0.25em;
-    font-family: 'lato-medium';
-}
-
-.mae-logo {
-    cursor: default;
+.no-select {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .tael-container {
