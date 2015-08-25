@@ -25,7 +25,7 @@ newTile = (tiles, parent_id) ->
                     dom:
                         ($ '<div>')
                         .addClass 'tael-node-leaf'
-                        .text 'foo'
+                        .text 'Hello, world! I am a leaf node.'
                         .appendTo parent.tile.value.content.dom
                     data: null
         ) - 1
