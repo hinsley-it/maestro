@@ -7,11 +7,11 @@ ref = require 'refjs'
 tiles = [
     new ref
         type: 'container'
+        child: undefined
         content:
             dom:
                 ($ '.tael-container')
                 .attr 'id', 'tael-node-0'
-        child: undefined
 ]
 
 newTile = (tiles, parent_id) ->
@@ -45,17 +45,17 @@ newTile = (tiles, parent_id) ->
         emptyInnerHtml = (jquery_element) ->
             return jquery_element.html ''
 
+        emptyInnerHtml parent.tile.value.content.dom
+
         parent.tile.value =
             type: 'branch'
-            content:
-                dom:
-                    emptyInnerHtml(
-                        parent.tile.value.content.dom
-                        .attr 'class', 'tael-node-branch'
-                    )
             children:
                 left: pushTile parent
                 right: pushTile parent
+            content:
+                dom:
+                    parent.tile.value.content.dom
+                    .attr 'class', 'tael-node-branch'
             layout:
                 split: 'horizontal'
                 divider_location: 0.5
