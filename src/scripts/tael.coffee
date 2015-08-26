@@ -16,42 +16,58 @@ tiles = [
 
 newTile = (tiles, parent_id) ->
     # Add a new tile to the `tiles` array.
+    setTileClass = (tile, float) ->
+        # Set the class of a tile which is represented as a `ref`.
+        tile.value.content.dom.attr 'class', 'tael-node-leaf-' + float
+
+    setTileId = (tile, index) ->
+        # Set the ID of a tile which is represented as a `ref`.
+        tile.value.content.dom.attr 'id', 'tael-node-' + index
+
     pushTile = (parent) ->
-        # Push a new tile to the `tiles` array and return its index.
-        index = (
+        # Push a new tile to the `tiles` array and return its index. Not safe
+        # to use without some sort of wrapper, because no ID or class is
+        # attached to the created tile in the DOM.
+        (
             tiles.push new ref
                 type: 'leaf'
                 content:
                     dom:
                         ($ '<div>')
-                        .addClass 'tael-node-leaf'
                         .text 'Hello, world! I am a leaf node.'
                         .appendTo parent.tile.value.content.dom
                     data: null
         ) - 1
-        tiles[index].value.content.dom.attr 'id', 'tael-node-'+index
+
+    createTile = (parent, float) ->
+        # Append a new tile to the `tiles` array and return its index.
+        index = pushTile parent
+        tile = tiles[index]
+
+        setTileClass tile, float
+        setTileId tile, index
         index
     
     addLeafToContainer = (parent) ->
         # Create only one tile and add it as the child of the supplied parent.
         # As the container tile is the top-level tile, it has only a single
         # child tile.
-        parent.tile.value.child = pushTile parent
+        parent.tile.value.child = createTile parent, 'clear'
     
     addLeavesToLeaf = (parent) ->
         # Create two tiles; convert the 'leaf' tile into a 'branch' tile
         # before inserting the two new 'leaf' tiles into the newly-classified
         # 'branch' tile.
         emptyInnerHtml = (jquery_element) ->
-            return jquery_element.html ''
+            jquery_element.html ''
 
         emptyInnerHtml parent.tile.value.content.dom
 
         parent.tile.value =
             type: 'branch'
             children:
-                left: pushTile parent
-                right: pushTile parent
+                left: createTile parent, 'left'
+                right: createTile parent, 'right'
             content:
                 dom:
                     parent.tile.value.content.dom
