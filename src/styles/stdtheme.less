@@ -60,7 +60,7 @@ body {
 
 .header {
     padding: 8px 16px;
-    font-family: 'montserrat-hairline';
+ .   font-family: 'montserrat-hairline';
     font-size: 32px;
     text-align: center;
 }
@@ -85,15 +85,12 @@ body {
     cursor: default;
 }
 
-.nav li a {
+.nav() {
     color: inherit;
     background: none;
 }
-.nav li a:hover {
-    background: none;
-}
-.nav li a:active {
-    background: none;
+.nav li a, .nav li a:active, .nav li a:hover {
+    .nav();
 }
 
 .no-select {
@@ -107,11 +104,27 @@ body {
 
 .tael-container {
     @side-margin: 16px;
-    
+
     position: absolute;
     right: @side-margin;
     left: @side-margin;
     padding: 16px;
     color: @dark-grey;
     background-color: @off-white;
+}
+
+.tael-node-branch {
+    height: 100%;
+}
+
+.tael-node-leaf(@float) {
+    float: @float;
+    width: 50%;
+    height: 100%;
+}
+.tael-node-leaf-left {
+    .tael-node-leaf(left);
+}
+.tael-node-leaf-right {
+    .tael-node-leaf(right);
 }
