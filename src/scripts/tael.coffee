@@ -14,7 +14,7 @@ tiles = [
                 .attr 'id', 'tael-node-0'
 ]
 
-newTile = (tiles, parent_id) ->
+newTile = (tiles, parent_id, orientation) ->
     # Add a new tile to the `tiles` array.
     setTileClass = (tile, side) ->
         # Set the class of a tile which is represented as a `ref`.
@@ -65,7 +65,7 @@ newTile = (tiles, parent_id) ->
         # child tile.
         parent.tile.value.child = createTile parent, 'siblingless', true
     
-    addLeavesToLeaf = (parent) ->
+    addLeavesToLeaf = (parent, orientation) ->
         # Create two tiles; convert the 'leaf' tile into a 'branch' tile
         # before inserting the two new 'leaf' tiles into the newly-classified
         # 'branch' tile.
@@ -77,14 +77,14 @@ newTile = (tiles, parent_id) ->
         parent.tile.value =
             type: 'branch'
             children:
-                left: createTile parent, 'vertical', true
-                right: createTile parent, 'vertical', false
+                left: createTile parent, orientation, true
+                right: createTile parent, orientation, false
             content:
                 dom:
                     parent.tile.value.content.dom
                     .attr 'class', 'tael-node-branch'
             layout:
-                split: 'horizontal'
+                split: orientation
                 divider_location: 0.5
     
     parent =
@@ -97,10 +97,17 @@ newTile = (tiles, parent_id) ->
         when 'container'
             addLeafToContainer parent
         when 'leaf'
-            addLeavesToLeaf parent
+            addLeavesToLeaf parent, orientation
         when 'branch'
             error.throw "Branch tiles cannot spawn new children post-creation."
 
 module.exports = ->
-    newTile tiles, 0
-    newTile tiles, 1
+    new_tiles = [
+        [0, 'siblingless'],
+        [1, 'horizontal'],
+        [3, 'vertical']
+    ]
+
+    for tile in new_tiles
+        newTile tiles, tile[0], tile[1]
+
