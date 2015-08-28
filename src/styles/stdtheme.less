@@ -112,14 +112,36 @@ body {
     background-color: @off-white;
 }
 
-.tael-node-branch {
-    height: 100%;
-}
-
-.tael-node-leaf(@float, @width, @height) {
+.tael-node(@float, @width, @height) {
     float: @float;
     width: @width;
     height: @height;
+}
+
+.tael-node-branch(@float, @width, @height) {
+    .tael-node(@float, @width, @height);
+}
+.tael-node-branch-horizontal() {
+    .tael-node-branch(clear, 100%, 50%);
+}
+.tael-node-branch-vertical(@float) {
+    .tael-node-branch(@float, 50%, 100%);
+}
+.tael-node-branch-siblingless {
+    .tael-node-branch(clear, 100%, 100%);
+}
+.tael-node-branch-bottom, .tael-node-branch-top {
+    .tael-node-branch-horizontal();
+}
+.tael-node-branch-left {
+    .tael-node-branch-vertical(left);
+}
+.tael-node-branch-right {
+    .tael-node-branch-vertical(right);
+}
+
+.tael-node-leaf(@float, @width, @height) {
+    .tael-node(@float, @width, @height);
     padding: 16px;
     outline: 1px solid @dark-grey;
 }
