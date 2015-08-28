@@ -79,21 +79,21 @@ newTile = (tiles, parent_id, orientation) ->
             .pop()
 
         parent.tile.value =
-            type: 'branch'
-            children:
-                left: createTile parent, orientation, true
-                right: createTile parent, orientation, false
-            content:
-                dom:
+            'type': 'branch'
+            'children':
+                'left': createTile parent, orientation, true
+                'right': createTile parent, orientation, false
+            'content':
+                'dom':
                     parent.tile.value.content.dom
                     .attr 'class', 'tael-node-branch-' + orientation_loc_substr
-            layout:
-                split: orientation
-                divider_location: 0.5
+            'layout':
+                'orientation': orientation
+                'divider_location': 0.5
     
     parent =
-        id: parent_id
-        tile: tiles[parent_id]
+        'id': parent_id
+        'tile': tiles[parent_id]
     
     switch parent.tile.value.type
         # Modify the parent tile and append one or two new tile(s) to the
@@ -105,12 +105,43 @@ newTile = (tiles, parent_id, orientation) ->
         when 'branch'
             error.throw "Branch tiles cannot spawn new children post-creation."
 
+moveBranchDivider = (tiles, id, new_position) ->
+    # `new_location` should be a floating-point value between or equal to 0.0
+    # or 1.0.
+    branch = tiles[id]
+    branch_orientation = branch.value.layout.orientation
+
+    # Modify the branch node in the `tiles` array.
+    branch.value.layout.divider_location = new_position
+    # Update the CSS style of the branch node's child nodes.
+    first_child_size = new_position * 100
+    second_child_size = 100 - first_child_size
+
+    dimension = switch branch_orientation
+        when 'horizontal'
+            'height'
+        when 'vertical'
+            'width'
+
+    #== First child node
+    tiles[branch.value.children.left].value.content.dom.css dimension,
+        (do first_child_size.toString) + '%'
+    #== Second child node
+    tiles[branch.value.children.right].value.content.dom.css dimension,
+        (do second_child_size.toString) + '%'
+
+reorientBranchDivider = (tiles, id) -> undefined
+
 module.exports = ->
     new_tiles = [
         [0, 'siblingless']
         [1, 'horizontal']
         [3, 'vertical']
+        [5, 'vertical']
     ]
 
     for tile in new_tiles
         newTile tiles, tile[0], tile[1]
+
+    moveBranchDivider tiles, 3, 1.0 / 3
+    moveBranchDivider tiles, 5, 0.5
