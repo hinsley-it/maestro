@@ -53,7 +53,7 @@ newTile = (tiles, parent_id, orientation) ->
                     if tile_left_node then 'left'
                     else 'right'
                 when 'siblingless'
-                    'clear'
+                    orientation
 
         setTileClass tile, tile_side
         setTileId tile, index
@@ -74,6 +74,10 @@ newTile = (tiles, parent_id, orientation) ->
 
         emptyInnerHtml parent.tile.value.content.dom
 
+        orientation_loc_substr = (parent.tile.value.content.dom.attr 'class')
+            .split('-')
+            .pop()
+
         parent.tile.value =
             type: 'branch'
             children:
@@ -82,7 +86,7 @@ newTile = (tiles, parent_id, orientation) ->
             content:
                 dom:
                     parent.tile.value.content.dom
-                    .attr 'class', 'tael-node-branch-siblingless'
+                    .attr 'class', 'tael-node-branch-' + orientation_loc_substr
             layout:
                 split: orientation
                 divider_location: 0.5
@@ -103,8 +107,8 @@ newTile = (tiles, parent_id, orientation) ->
 
 module.exports = ->
     new_tiles = [
-        [0, 'siblingless'],
-        [1, 'horizontal'],
+        [0, 'siblingless']
+        [1, 'horizontal']
         [3, 'vertical']
     ]
 
