@@ -32,6 +32,7 @@
     "gulp-recess": "^1.1.2",
     "gulp-uglify": "^1.2.0",
     "jquery": "^2.1.4",
+    "mocha": "^2.2.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
@@ -39,6 +40,7 @@
   "license": "MIT",
   "dependencies": {
     "fullscreenjs": "0.0.2",
+    "mocha": "^2.2.5",
     "refjs": "^1.0.1"
   }
 }
