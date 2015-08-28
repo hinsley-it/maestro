@@ -116,27 +116,28 @@ body {
     height: 100%;
 }
 
-.tael-node-leaf() {
+.tael-node-leaf(@float, @width, @height) {
+    float: @float;
+    width: @width;
+    height: @height;
     padding: 16px;
     outline: 1px solid @dark-grey;
 }
-.tael-node-leaf-horizontal(@float) {
-    .tael-node-leaf();
-    float: @float;
-    width: 50%;
-    height: 100%;
+.tael-node-leaf-horizontal() {
+    .tael-node-leaf(clear, 100%, 50%);
 }
-.tael-node-leaf-vertical() {
-    .tael-node-leaf();
-    width: 100%;
-    height: 50%;
+.tael-node-leaf-vertical(@float) {
+    .tael-node-leaf(@float, 50%, 100%);
+}
+.tael-node-leaf-siblingless {
+    .tael-node-leaf(clear, 100%, 100%);
 }
 .tael-node-leaf-bottom, .tael-node-leaf-top {
-    .tael-node-leaf-vertical();
+    .tael-node-leaf-horizontal();
 }
 .tael-node-leaf-left {
-    .tael-node-leaf-horizontal(left);
+    .tael-node-leaf-vertical(left);
 }
 .tael-node-leaf-right {
-    .tael-node-leaf-horizontal(right);
+    .tael-node-leaf-vertical(right);
 }

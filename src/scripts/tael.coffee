@@ -16,9 +16,9 @@ tiles = [
 
 newTile = (tiles, parent_id) ->
     # Add a new tile to the `tiles` array.
-    setTileClass = (tile, float) ->
+    setTileClass = (tile, side) ->
         # Set the class of a tile which is represented as a `ref`.
-        tile.value.content.dom.attr 'class', 'tael-node-leaf-' + float
+        tile.value.content.dom.attr 'class', 'tael-node-leaf-' + side
 
     setTileId = (tile, index) ->
         # Set the ID of a tile which is represented as a `ref`.
@@ -39,12 +39,23 @@ newTile = (tiles, parent_id) ->
                     data: null
         ) - 1
 
-    createTile = (parent, float) ->
+    createTile = (parent, orientation, tile_left_node) ->
         # Append a new tile to the `tiles` array and return its index.
+        # `tile_left_side` should be a boolean.
         index = pushTile parent
         tile = tiles[index]
+        tile_side =
+            switch orientation
+                when 'horizontal'
+                    if tile_left_node then 'top'
+                    else 'bottom'
+                when 'vertical'
+                    if tile_left_node then 'left'
+                    else 'right'
+                when 'siblingless'
+                    'clear'
 
-        setTileClass tile, float
+        setTileClass tile, tile_side
         setTileId tile, index
         index
     
@@ -52,7 +63,7 @@ newTile = (tiles, parent_id) ->
         # Create only one tile and add it as the child of the supplied parent.
         # As the container tile is the top-level tile, it has only a single
         # child tile.
-        parent.tile.value.child = createTile parent, 'clear'
+        parent.tile.value.child = createTile parent, 'siblingless', true
     
     addLeavesToLeaf = (parent) ->
         # Create two tiles; convert the 'leaf' tile into a 'branch' tile
@@ -66,8 +77,8 @@ newTile = (tiles, parent_id) ->
         parent.tile.value =
             type: 'branch'
             children:
-                left: createTile parent, 'left'
-                right: createTile parent, 'right'
+                left: createTile parent, 'vertical', true
+                right: createTile parent, 'vertical', false
             content:
                 dom:
                     parent.tile.value.content.dom
@@ -93,4 +104,3 @@ newTile = (tiles, parent_id) ->
 module.exports = ->
     newTile tiles, 0
     newTile tiles, 1
-
