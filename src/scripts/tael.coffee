@@ -110,4 +110,3 @@ module.exports = ->
 
     for tile in new_tiles
         newTile tiles, tile[0], tile[1]
-
