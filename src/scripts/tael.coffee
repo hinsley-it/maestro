@@ -82,7 +82,7 @@ newTile = (tiles, parent_id, orientation) ->
             content:
                 dom:
                     parent.tile.value.content.dom
-                    .attr 'class', 'tael-node-branch'
+                    .attr 'class', 'tael-node-branch-siblingless'
             layout:
                 split: orientation
                 divider_location: 0.5
