@@ -42,5 +42,8 @@
     "fullscreenjs": "0.0.2",
     "mocha": "^2.2.5",
     "refjs": "^1.0.1"
+  },
+  "scripts": {
+    "test": "mocha tests/runtests.js"
   }
 }
