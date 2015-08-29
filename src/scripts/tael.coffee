@@ -74,7 +74,7 @@ newTile = (tiles, parent_id, orientation) ->
 
         emptyInnerHtml parent.tile.value.content.dom
 
-        orientation_loc_substr = (parent.tile.value.content.dom.attr 'class')
+        orient_loc_substr = (parent.tile.value.content.dom.attr 'class')
             .split('-')
             .pop()
 
@@ -86,7 +86,7 @@ newTile = (tiles, parent_id, orientation) ->
             'content':
                 'dom':
                     parent.tile.value.content.dom
-                    .attr 'class', 'tael-node-branch-' + orientation_loc_substr
+                    .attr 'class', 'tael-node-branch-' + orient_loc_substr
             'layout':
                 'orientation': orientation
                 'divider_location': 0.5
@@ -129,8 +129,6 @@ moveBranchDivider = (tiles, id, new_position) ->
     #== Second child node
     tiles[branch.value.children.right].value.content.dom.css dimension,
         (do second_child_size.toString) + '%'
-
-reorientBranchDivider = (tiles, id) -> undefined
 
 module.exports = ->
     new_tiles = [
