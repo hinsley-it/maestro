@@ -43,6 +43,6 @@
     "refjs": "^1.0.1"
   },
   "scripts": {
-    "test": "mocha tests/runtests.js"
+    "test": "mocha -u tdd"
   }
 }
