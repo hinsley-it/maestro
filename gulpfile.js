@@ -54,6 +54,8 @@ gulp.task('default', function () {
     gulp.watch('./src/scripts/**/*.coffee', ['build-coffee']);
     // Watch for LESS changes
     gulp.watch('./src/styles/**/*.less', ['build-less']);
+    // Watch for resource changes
+    gulp.watch('./src/res/**/*', ['build-resources']);
 });
 
 gulp.task('lint', [
